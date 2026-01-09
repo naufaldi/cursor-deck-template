@@ -2,8 +2,6 @@
 
 A beautiful, minimal slide deck template with Cursor branding. Built with Next.js, Tailwind CSS, and Framer Motion.
 
-![Cursor Deck](https://cursor.com/social.png)
-
 ## Quick Start
 
 ```bash
