@@ -133,6 +133,47 @@ For ASCII art, architecture diagrams, or visual layouts.
 }
 ```
 
+### `cover`
+
+Bold opening slide with large typography and no logo. Perfect for provocative presentation titles.
+
+```typescript
+{
+  id: 1,
+  title: "How to Ship AI Slop into Production",
+  content: "",
+  type: "cover",
+}
+```
+
+### `section`
+
+Section divider slides with large centered text and accent color. Use to separate major sections.
+
+```typescript
+{
+  id: 6,
+  title: "What is Slop?",
+  content: "",
+  type: "section",
+}
+```
+
+### `image`
+
+Image-focused slides with balanced layout. Ideal for diagrams, screenshots, or visual content.
+
+```typescript
+{
+  id: 7,
+  title: "System Architecture",
+  content: `![Architecture Diagram](https://example.com/diagram.png)
+
+System overview showing component relationships.`,
+  type: "image",
+}
+```
+
 ## Markdown Features
 
 The content field supports full GitHub Flavored Markdown:
@@ -254,6 +295,8 @@ cursor-deck-template/
 3. **Test on your target display** — Run `npm run build && npm start` to test production mode before presenting.
 
 4. **Keep slides scannable** — Aim for 3-5 bullet points max. Put details in speaker notes.
+
+5. **Check example slides** — See `docs/examples.md` for more slide examples and patterns.
 
 ## License
 

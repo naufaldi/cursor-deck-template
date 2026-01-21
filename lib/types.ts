@@ -2,7 +2,7 @@ export interface Slide {
   id: number;
   title: string;
   content: string;
-  type: "title" | "content" | "code" | "diagram" | "quote";
+  type: "title" | "content" | "code" | "diagram" | "quote" | "cover" | "section" | "image";
   notes?: string;
 }
 

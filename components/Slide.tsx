@@ -26,7 +26,8 @@ const slideVariants = {
 };
 
 export function Slide({ slide, direction }: SlideProps) {
-  const isTitle = slide.type === "title";
+  const isCentered = ["title", "cover", "section"].includes(slide.type);
+  const showLogo = !["cover", "title"].includes(slide.type);
 
   return (
     <motion.div
@@ -41,11 +42,11 @@ export function Slide({ slide, direction }: SlideProps) {
         opacity: { duration: 0.2 },
       }}
       className={`absolute inset-0 flex items-center justify-center p-8 md:p-16 lg:p-24 slide-bg-gradient ${
-        isTitle ? "text-center" : ""
+        isCentered ? "text-center" : ""
       }`}
     >
-      {/* Logo in bottom-left for non-title slides */}
-      {!isTitle && (
+      {/* Logo in bottom-left for regular slides */}
+      {showLogo && (
         <div className="absolute bottom-6 left-6 z-10">
           <Image
             src="/logo.svg"
@@ -59,12 +60,11 @@ export function Slide({ slide, direction }: SlideProps) {
 
       <div
         className={`max-w-5xl w-full ${
-          isTitle ? "flex flex-col items-center justify-center" : ""
+          isCentered ? "flex flex-col items-center justify-center" : ""
         }`}
       >
-        {isTitle ? (
+        {slide.type === "title" && (
           <div className="space-y-8">
-            {/* Logo on title slide */}
             <div className="mb-4">
               <Image
                 src="/logo.svg"
@@ -85,7 +85,47 @@ export function Slide({ slide, direction }: SlideProps) {
               <MarkdownRenderer content={slide.content} />
             </div>
           </div>
-        ) : (
+        )}
+
+        {slide.type === "cover" && (
+          <div className="space-y-8">
+            <h1
+              className="text-5xl md:text-7xl lg:text-8xl font-bold text-foreground leading-tight"
+              style={{ fontFamily: "'CursorGothic', system-ui, sans-serif" }}
+            >
+              {slide.title}
+            </h1>
+            {slide.content && (
+              <div className="text-2xl md:text-3xl text-foreground-muted">
+                <MarkdownRenderer content={slide.content} />
+              </div>
+            )}
+          </div>
+        )}
+
+        {slide.type === "section" && (
+          <div className="space-y-6">
+            <h2
+              className="text-5xl md:text-6xl lg:text-7xl font-bold text-accent-primary leading-tight"
+              style={{ fontFamily: "'CursorGothic', system-ui, sans-serif" }}
+            >
+              {slide.title}
+            </h2>
+            {slide.content && (
+              <div className="text-xl md:text-2xl text-foreground-muted">
+                <MarkdownRenderer content={slide.content} />
+              </div>
+            )}
+          </div>
+        )}
+
+        {slide.type === "image" && (
+          <div className="space-y-6">
+            <MarkdownRenderer content={slide.content} />
+          </div>
+        )}
+
+        {!["title", "cover", "section", "image"].includes(slide.type) && (
           <div className="space-y-4">
             <MarkdownRenderer content={slide.content} />
           </div>
