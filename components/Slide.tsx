@@ -120,14 +120,15 @@ export function Slide({ slide }: SlideProps) {
         )}
 
         {slide.type === "video" && slide.video && (
-          <div className="flex items-center justify-center w-full">
-            <video
+          <div className="flex items-center justify-center w-full h-full">
+            <iframe
               src={slide.video}
-              controls
-              className="max-h-[80vh] w-auto object-contain rounded-lg"
-            >
-              Your browser does not support the video tag.
-            </video>
+              allow="autoplay"
+              className="w-full rounded-lg"
+              style={{ height: "75vh", maxWidth: "90vw" }}
+              allowFullScreen
+              title={slide.title}
+            />
           </div>
         )}
 
