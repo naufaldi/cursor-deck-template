@@ -15,31 +15,29 @@ interface SlidePresenterProps {
 export function SlidePresenter({ slide, navigation }: SlidePresenterProps) {
   const router = useRouter();
   const { current, total, hasNext, hasPrev } = navigation;
-  const [direction, setDirection] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
 
   const goTo = useCallback(
-    (id: number, dir: number) => {
-      setDirection(dir);
+    (id: number) => {
       router.push(`/slides/${id}`);
     },
     [router]
   );
 
   const goNext = useCallback(() => {
-    if (hasNext) goTo(current + 1, 1);
+    if (hasNext) goTo(current + 1);
   }, [hasNext, current, goTo]);
 
   const goPrev = useCallback(() => {
-    if (hasPrev) goTo(current - 1, -1);
+    if (hasPrev) goTo(current - 1);
   }, [hasPrev, current, goTo]);
 
   const goFirst = useCallback(() => {
-    if (current !== 1) goTo(1, -1);
+    if (current !== 1) goTo(1);
   }, [current, goTo]);
 
   const goLast = useCallback(() => {
-    if (current !== total) goTo(total, 1);
+    if (current !== total) goTo(total);
   }, [current, total, goTo]);
 
   // Keyboard navigation
@@ -79,7 +77,7 @@ export function SlidePresenter({ slide, navigation }: SlidePresenterProps) {
             const targetSlide = parseInt(e.key, 10);
             if (targetSlide <= total) {
               e.preventDefault();
-              goTo(targetSlide, targetSlide > current ? 1 : -1);
+              goTo(targetSlide);
             }
           }
       }
@@ -118,8 +116,8 @@ export function SlidePresenter({ slide, navigation }: SlidePresenterProps) {
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
-      <AnimatePresence initial={false} custom={direction} mode="wait">
-        <Slide key={slide.id} slide={slide} direction={direction} />
+      <AnimatePresence initial={true} mode="wait">
+        <Slide key={slide.id} slide={slide} />
       </AnimatePresence>
 
       <SlideNav navigation={navigation} />

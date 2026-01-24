@@ -7,39 +7,33 @@ import { MarkdownRenderer } from "./MarkdownRenderer";
 
 interface SlideProps {
   slide: SlideType;
-  direction: number;
 }
 
 const slideVariants = {
-  enter: (direction: number) => ({
-    x: direction > 0 ? 100 : -100,
+  enter: {
     opacity: 0,
-  }),
+  },
   center: {
-    x: 0,
     opacity: 1,
   },
-  exit: (direction: number) => ({
-    x: direction < 0 ? 100 : -100,
+  exit: {
     opacity: 0,
-  }),
+  },
 };
 
-export function Slide({ slide, direction }: SlideProps) {
-  const isCentered = ["title", "cover", "section"].includes(slide.type);
+export function Slide({ slide }: SlideProps) {
+  const isCentered = ["title", "cover", "section", "video"].includes(slide.type);
   const showLogo = !["cover", "title"].includes(slide.type);
 
   return (
     <motion.div
       key={slide.id}
-      custom={direction}
       variants={slideVariants}
       initial="enter"
       animate="center"
       exit="exit"
       transition={{
-        x: { type: "spring", stiffness: 300, damping: 30 },
-        opacity: { duration: 0.2 },
+        opacity: { duration: 0.3, ease: "easeOut" },
       }}
       className={`absolute inset-0 flex items-center justify-center p-8 md:p-16 lg:p-24 slide-bg-gradient ${
         isCentered ? "text-center" : ""
@@ -125,7 +119,19 @@ export function Slide({ slide, direction }: SlideProps) {
           </div>
         )}
 
-        {!["title", "cover", "section", "image"].includes(slide.type) && (
+        {slide.type === "video" && slide.video && (
+          <div className="flex items-center justify-center w-full">
+            <video
+              src={slide.video}
+              controls
+              className="max-h-[80vh] w-auto object-contain rounded-lg"
+            >
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        )}
+
+        {!["title", "cover", "section", "image", "video"].includes(slide.type) && (
           <div className="space-y-4">
             <MarkdownRenderer content={slide.content} />
           </div>

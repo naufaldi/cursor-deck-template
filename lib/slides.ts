@@ -90,87 +90,37 @@ Can you spot which ones were written by AI?`,
   {
     id: 9,
     title: "Example 1: Bad Code",
-    content: `## Example 1
+    content: `![Example 1: Bad Code](/bad-code-1.webp)
 
-\`\`\`typescript
-function getData(url, callback) {
-  fetch(url).then(res => res.json()).then(data => {
-    processData(data, (processed) => {
-      validateData(processed, (validated) => {
-        saveData(validated, (saved) => {
-          callback(saved);
-        });
-      });
-    });
-  });
-}
-\`\`\`
-
-**Classic callback hell with no error handling**`,
-    type: "code",
+**Meaningless constants** - Creating constants like \`ONE = 1\` adds no semantic value and defeats the purpose of constants`,
+    type: "image",
   },
 
   {
     id: 10,
     title: "Example 2: Bad Code",
-    content: `## Example 2
+    content: `![Example 2: Bad Code](/bad-code-2.webp)
 
-\`\`\`typescript
-async function updateUser(id: string, data: any) {
-  const user = await db.users.findById(id);
-  user.name = data.name;
-  user.email = data.email;
-  user.role = data.role;
-  await db.users.save(user);
-  return user;
-}
-\`\`\`
-
-**No validation, no error handling, any type, no authorization check**`,
-    type: "code",
+**Pyramid of doom** - Deeply nested if-else statements make code unreadable and hard to maintain`,
+    type: "image",
   },
 
   {
     id: 11,
     title: "Example 3: Bad Code",
-    content: `## Example 3
+    content: `![Example 3: Bad Code](/bad-code-3.png)
 
-\`\`\`typescript
-function calc(a, b, c) {
-  let x = a + b;
-  let y = x * c;
-  let z = y - a;
-  let result = z / b;
-  if (result > 100) {
-    return result * 2;
-  }
-  return result;
-}
-\`\`\`
-
-**Unclear names, no types, magic numbers, no documentation**`,
-    type: "code",
+**Extreme over-engineering** - Creating O(n²) complexity to generate one random number with unreadable nested indexing`,
+    type: "image",
   },
 
   {
     id: 12,
     title: "Example 4: Bad Code",
-    content: `## Example 4
+    content: `![Example 4: Bad Code](/bad-code-4.webp)
 
-\`\`\`typescript
-const API_KEY = "sk-1234567890abcdef";
-const DB_URL = "postgres://admin:password123@prod-db:5432/app";
-
-function sendNotification(userId: string) {
-  fetch("https://api.service.com/notify", {
-    headers: { "X-API-Key": API_KEY },
-    body: JSON.stringify({ user: userId })
-  });
-}
-\`\`\`
-
-**Hardcoded secrets, no environment variables, silent failures**`,
-    type: "code",
+**Ternary hell** - 15+ levels of nested ternary operators that should be handled with CSS media queries`,
+    type: "image",
   },
 
   // ============================================================
@@ -191,7 +141,7 @@ function sendNotification(userId: string) {
 - Before AI, engineers wrote code with low quality
 - AI learned from engineer code
 - Not every engineer can write good code
-- Even senior engineers make mistakes
+- Even senior engineers can write bad code
 
 **AI didn't invent bad code. We did.**`,
     type: "content",
@@ -405,6 +355,22 @@ This is where experience and judgment matter most.`,
 
   {
     id: 32,
+    title: "PRD Demo",
+    content: "",
+    type: "video",
+    video: "/prd.mp4",
+  },
+
+  {
+    id: 33,
+    title: "RFC Demo",
+    content: "",
+    type: "video",
+    video: "/rfc.mp4",
+  },
+
+  {
+    id: 34,
     title: "MCP: Model Context Protocol",
     content: `## Give AI Better Context
 
@@ -418,7 +384,7 @@ This is where experience and judgment matter most.`,
   },
 
   {
-    id: 33,
+    id: 35,
     title: "Agent Skills",
     content: `## Reusable Knowledge Packages
 
@@ -432,7 +398,7 @@ Skills teach AI your way of working.`,
   },
 
   {
-    id: 34,
+    id: 36,
     title: "AGENTS.md / Rules",
     content: `## Project-Specific Instructions
 
@@ -446,18 +412,34 @@ Make AI follow your project standards automatically.`,
     type: "content",
   },
 
+  {
+    id: 37,
+    title: "Work on Vibe",
+    content: "",
+    type: "video",
+    video: "/work on vibe.mp4",
+  },
+
+  {
+    id: 38,
+    title: "PR Review Demo",
+    content: "",
+    type: "video",
+    video: "/pr-review.mp4",
+  },
+
   // ============================================================
   // CLOSING
   // ============================================================
   {
-    id: 35,
+    id: 39,
     title: "Key Takeaways",
     content: "",
     type: "section",
   },
 
   {
-    id: 36,
+    id: 40,
     title: "Remember This",
     content: `## Key Takeaways
 
@@ -471,7 +453,7 @@ Make AI follow your project standards automatically.`,
   },
 
   {
-    id: 37,
+    id: 41,
     title: "Ship Quality, Not Just Features",
     content: `## Conclusion
 

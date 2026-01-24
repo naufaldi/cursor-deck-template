@@ -72,8 +72,8 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
     },
     li({ children }) {
       return (
-        <li className="text-foreground/90 pl-2 flex items-start gap-3 leading-relaxed">
-          <span className="text-accent mt-1.5 shrink-0">▸</span>
+        <li className="text-foreground/90 pl-2 flex items-center gap-3 leading-relaxed">
+          <span className="text-accent shrink-0">▸</span>
           <span>{children}</span>
         </li>
       );
@@ -128,6 +128,16 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
         >
           {children}
         </a>
+      );
+    },
+    img({ src, alt, ...props }) {
+      return (
+        <img
+          src={src}
+          alt={alt}
+          className="max-h-[60vh] w-auto object-contain rounded-lg my-4"
+          {...props}
+        />
       );
     },
   };
