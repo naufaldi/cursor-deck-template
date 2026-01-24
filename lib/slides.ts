@@ -358,7 +358,7 @@ This is where experience and judgment matter most.`,
     title: "PRD Demo",
     content: "",
     type: "video",
-    video: "/prd.mp4",
+    video: "https://drive.google.com/file/d/1HhF5WL_AWMhQmDLE9ta4zgklvwgAnMh_/view?usp=sharing",
   },
 
   {
@@ -366,7 +366,7 @@ This is where experience and judgment matter most.`,
     title: "RFC Demo",
     content: "",
     type: "video",
-    video: "/rfc.mp4",
+    video: "https://drive.google.com/file/d/1GzYVJMNgQSoo1BRoZ8cBl2KTQPQf2fNq/view?usp=sharing",
   },
 
   {
@@ -417,7 +417,7 @@ Make AI follow your project standards automatically.`,
     title: "Work on Vibe",
     content: "",
     type: "video",
-    video: "/work on vibe.mp4",
+    video: "https://drive.google.com/file/d/1DNAJLFbXhQqeo5D-tEX_nCh2X-PnI1Cy/view?usp=sharing",
   },
 
   {
@@ -425,7 +425,7 @@ Make AI follow your project standards automatically.`,
     title: "PR Review Demo",
     content: "",
     type: "video",
-    video: "/pr-review.mp4",
+    video: "https://drive.google.com/file/d/13dvsVTDx1Ie0CvbzcuIrpyvppKVihXGO/view?usp=sharing",
   },
 
   // ============================================================
